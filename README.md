@@ -1,12 +1,11 @@
 # NetworkTwoSampleTest
 
 
-Main file: <p style="color:red;">[Meijia, which file is main file?]</p>
-The main file is different based on different simulation?
+Main file:  The main file is different for each simulation/data example.  See details below.
 
-Reference:<br><br>
-<i>Higher-order accurate two-sample network inference and network hashing,</i><br>
-Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen<br>
+**Reference:**<br><br>
+Higher-order accurate two-sample network inference and network hashing
+*Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen*<br>
 https://arxiv.org/pdf/2208.07573.pdf
 
 
