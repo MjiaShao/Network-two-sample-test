@@ -2,6 +2,7 @@
 
 
 Main file: <p style="color:red;">[Meijia, which file is main file?]</p>
+The main file is different based on different simulation?
 
 Reference:<br><br>
 <i>Higher-order accurate two-sample network inference and network hashing,</i><br>
