@@ -29,8 +29,6 @@ function [p_value, conf_int] = Our_method_FastTest(FileName1, FileName2, conf_le
 		
 		MotifName = temp1.MotifName;
 		switch MotifName
-			% case 'Edge'
-				% r = 2;  s = 2;
 			case 'Triangle'
 				r = 3;  s = 3;
 			case 'Vshape'
@@ -44,9 +42,6 @@ function [p_value, conf_int] = Our_method_FastTest(FileName1, FileName2, conf_le
 		rho_B = temp2.rho_A;
 		U = temp1.U;
 		V = temp2.U;
-		
-		%%%%%%%%%%%%%%%%%%%%
-		%%%%%%%%%%%%%%%%%%%%
 		
 		smn = sqrt(temp1.aa11/m + temp2.aa11/n);
 		
@@ -78,8 +73,6 @@ function [p_value, conf_int] = Our_method_FastTest(FileName1, FileName2, conf_le
 		GT = cdf(StdNormal, T_hat) - pdf(StdNormal, T_hat) * ( Q1 + Q2*((T_hat).^2 - 1)+I_0 );
 		
 		GT = max([min([GT,1]),0]);
-		
-		%%%%%%%%%%%%%%%%%%
 		
 		p_value(count_index) = 2*min(GT, 1-GT);
 		

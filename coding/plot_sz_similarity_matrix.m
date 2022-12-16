@@ -1,7 +1,7 @@
 rng(2);
 clear;
 % READ IN DATA
-load('~\data\TwoSampleNetwork\Final_data.mat');
+load('./data/TwoSampleNetwork/Final_data.mat');
 l_NC = size(cor_NC_fisherZ_correct, 3);
 l_SZ = size(cor_SZ_fisherZ_correct, 3);
 m = size(cor_NC_fisherZ_correct, 1);

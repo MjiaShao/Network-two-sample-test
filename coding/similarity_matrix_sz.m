@@ -4,7 +4,7 @@ MotifNameList = {'Triangle', 'Vshape'};
 
 
 % READ IN DATA
-load('~\data\TwoSampleNetwork\Final_data.mat');
+load('./data/TwoSampleNetwork/Final_data.mat');
 l_NC = size(cor_NC_fisherZ_correct, 3);
 l_SZ = size(cor_SZ_fisherZ_correct, 3);
 m = size(cor_NC_fisherZ_correct, 1);
@@ -22,7 +22,7 @@ l_all = size(All_networks, 3);
 
 %% total network set
 l_all = size(All_networks, 3);
-dir1 = strcat("~\hash_data_sz\");
+dir1 = strcat("./hash_data_sz/");
 for ll = 1:l_all
 	Net = All_networks(:,:,ll);
 	Our_method_NetHashing(...

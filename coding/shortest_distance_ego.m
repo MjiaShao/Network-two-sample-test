@@ -1,5 +1,5 @@
 
-Files = dir("~\hash_edge");
+Files = dir("./hash_edge");
 isdir = [Files.isdir];
 indexf = isdir ==0;
 Filesf = Files(indexf);
@@ -11,7 +11,7 @@ end
 
 
 % read in raw data
-raw_edge_list = readmatrix('~/data/gplus_combined.txt');
+raw_edge_list = readmatrix('./data/gplus_combined.txt');
 raw_edge_list = floor(raw_edge_list);
 
 % set up a dictionary

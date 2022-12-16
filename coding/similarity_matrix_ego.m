@@ -1,4 +1,4 @@
-Files = dir("~\hash_edge");
+Files = dir("./hash_edge");
 isdir = [Files.isdir];
 indexf = isdir ==0;
 Filesf = Files(indexf);
