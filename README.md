@@ -1,5 +1,4 @@
-# NetworkTwoSampleTest
-
+# Network-Two-Sample-Test
 
 Main file:  The main file is different for each simulation/data example.  See details below.
 
@@ -11,12 +10,12 @@ Main file:  The main file is different for each simulation/data example.  See de
 
 
 
-CONTENTS:
+**CONTENTS:**
 * This README file contains:
   (i). Step-by-step instructions on how to reproduce the simulation results in Main Paper.
   (ii). Computing resources (at the end of this file).
 
-REMARKS:
+**REMARKS:**
 * Additional simulation results reported in Supplemental Material document are either intermediate outputs of the code here, or can be easily reproduced by commenting out Line 28 in 'plot_ROC_comparison_hist.m'.
 * Data example 2: if you would like to reproduce the results for data example 2, please contact the owner of that data set (see "Data_permission.txt" for more details) before running the code.
 
