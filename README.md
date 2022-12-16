@@ -1,23 +1,26 @@
 # Network-Two-Sample-Test
 
-Main file:  The main file is different for each simulation/data example.  See details below.
+Each simulation/data example has its own main file.  See details below.
 
-<h1>Reference:</h1>
-+ Higher-order accurate two-sample network inference and network hashing<br />
-  *Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen*<br />
-  https://arxiv.org/pdf/2208.07573.pdf
+<h2>Reference:</h2>
+Higher-order accurate two-sample network inference and network hashing<br />
+<i>Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu & Shuo Chen</i><br>
+https://arxiv.org/pdf/2208.07573.pdf
+
+<h2>CONTENTS:</h2>
+This README file contains:
+<ol>
+  <li>Step-by-step instructions on how to reproduce the simulation results in Main Paper.
+  <li>Computing resources (at the end of this file).
+</ol>
+   
+<h2>REMARKS:</h2>
+<ul>
+  <li>Additional simulation results reported in Supplemental Material document are either intermediate outputs of the code here, or can be easily reproduced by commenting out Line 28 in 'plot_ROC_comparison_hist.m'.
+   <li>Data example 2: if you would like to reproduce the results for data example 2, please contact the owner of that data set (see "Data_permission.txt" for more details) before running the code.
+</ul>
 
 
-
-
-**CONTENTS:**
-* This README file contains:
-  (i). Step-by-step instructions on how to reproduce the simulation results in Main Paper.
-  (ii). Computing resources (at the end of this file).
-
-**REMARKS:**
-* Additional simulation results reported in Supplemental Material document are either intermediate outputs of the code here, or can be easily reproduced by commenting out Line 28 in 'plot_ROC_comparison_hist.m'.
-* Data example 2: if you would like to reproduce the results for data example 2, please contact the owner of that data set (see "Data_permission.txt" for more details) before running the code.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Subroutine list:
