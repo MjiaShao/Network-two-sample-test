@@ -4,9 +4,9 @@
 Main file:  The main file is different for each simulation/data example.  See details below.
 
 **Reference:**<br>
-Higher-order accurate two-sample network inference and network hashing<br>
-*Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen*<br>
-https://arxiv.org/pdf/2208.07573.pdf
++ Higher-order accurate two-sample network inference and network hashing<br />
+  *Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen*<br />
+  https://arxiv.org/pdf/2208.07573.pdf
 
 
 
