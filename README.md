@@ -6,7 +6,18 @@ by Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen
 https://arxiv.org/pdf/2208.07573.pdf
 
 
-Functions which were used in the paper presents below:
+
+CONTENTS:
+* This README file contains:
+  (i). Step-by-step instructions on how to reproduce the simulation results in Main Paper.
+  (ii). Computing resources (at the end of this file).
+
+REMARKS:
+* Additional simulation results reported in Supplemental Material document are either intermediate outputs of the code here, or can be easily reproduced by commenting out Line 28 in 'plot_ROC_comparison_hist.m'.
+* Data example 2: if you would like to reproduce the results for data example 2, please contact the owner of that data set (see "Data_permission.txt" for more details) before running the code.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Subroutine list:
 1. 'generate_A.m'
 2. 'graphon.m'
 3. 'graphon_mean.m'
@@ -16,29 +27,61 @@ Functions which were used in the paper presents below:
 7. 'sort_nodes.m'
 8. 'sort_nodes_with_clusters.m'
 9. 'NeighborhoodSmoothing.m'
+10.'shadedErrorBar.m'
 
-Before you get all the result plots:
-1. Please save all the coding files in the same folder and construct two subfolders as 'result' and 'ROC_result';
-2. Please save the data in the subfolder as 'data'.
+In the above list, files composed by others are:
+4.  publically available routine, https://github.com/yzhanghf/NetworkEdgeworthExpansion
+9.  publically available routine, https://github.com/yzhanghf/NeighborhoodSmoothing
+10. publically available routine, https://github.com/raacampbell/shadedErrorBar
 
-To get simulation results plots in the section 5.1 and 5.2 in the paper:
-1. To run 'T_hat_and_CI_coverage_simulation.m' and save all the result files in you local file folder 'result';
-2. To run 'plot_CDF_approximation_error.m' in order to get Figure 1(a);
-3. To run 'plot_coverage_heatmap.m' in order to get Figure 1(b).
 
-To get simulation result plots in the section 5.3
-1. To run 'Roc_simulation.m' and save those results in the local file folder 'ROC_result';
-2. To run 'plot_Roc_all.m' in order to get the first row of Figure 2;
-3. To run 'Roc_simulation2.m' and save those results in the local file folder 'ROC_result';
-4. To run 'plot_ROC_comparison_hist.m' to get the second row of Figure 2.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Preparation: before running our code, please:
+1. Place all coding files in main working folder, and create two subfolders named 'result' and 'ROC_result';
+2. Place the data files in a subfolder named 'data'.
 
-To get the result plots in the section 5.3
-1. (load data of example1 from 'data\gplus' folder and 'gplus_combined.txt' in 'data' folder)(Not run); 
-2. To run 'data_preposessing_ego.m' for prepossessing data and it will automatically construct a 'data_pre' and 'hash_edge' folder;
-3. To run 'similarity_matrix_ego.m' and it will load the data in 'hash_edge' automatically; 
-4. To run 'shortest_distance_ego.m';
-5. To run 'plot_ego_similarity_matrix.m' in order to get the plot in the Figure 3(a).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To reproduce simulations 1 & 2 results in Sections 5.1 and 5.2:
+1. Run 'T_hat_and_CI_coverage_simulation.m', results will output to subfolder 'result';
+   (This step takes some time, please be patient.)
+2. Run 'plot_CDF_approximation_error.m' to reproduce Figure 1(a);
+3. Run 'plot_coverage_heatmap.m' to reproduce Figure 1(b).
 
-To get the result plots in the section 5.4 
-1. To run 'similarity_matrix_sz.m' in order to load data example2 from 'data\TwoSampleNetwork\Final_data.mat' and did data prepossessing;
-2. To run 'plot_sz_similarity_matrix.m' in order to get the plot in the Figure 3(b).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To reproduce simulation 3 results in Section 5.3:
+1. Run 'Roc_simulation.m', results will output to subfolder 'ROC_result';
+   (This step takes some time, please be patient.  It's recommended to run this step on a computing server.)
+2. Run 'plot_Roc_all.m' to reproduce Row 1 of Figure 2;
+3. Run 'Roc_simulation2.m', results will output to subfolder 'ROC_result';
+   (This step takes some time, please be patient.  It's recommended to run this step on a computing server.)
+4. Run 'plot_ROC_comparison_hist.m'  to reproduce Row 2 of Figure 2.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To reproduce data example 1 results in Section 5.4:
+1. Preparation: download data from http://snap.stanford.edu/data/ego-Gplus.html (official website for this publically available data set) and unzip, place individual data files unzipped from 'gplus.tar.gz' under subfolder 'data/gplus', place 'gplus_combined.txt' under subfolder 'data'.
+2. Run 'data_preposessing_ego.m' for prepossessing data and it will automatically construct 'data_pre' and 'hash_edge' subfolders;
+3. Run 'similarity_matrix_ego.m', it will load the data in 'hash_edge' automatically; 
+4. Run 'shortest_distance_ego.m';
+5. Run 'plot_ego_similarity_matrix.m' to reproduce Figure 3(a).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To reproduce data example 2 results in Section 5.5:
+0. You need to obtain data from the data owner.  The data is not publically available.  See "Data_permission.txt" for more details.
+1. Preparation: place data at path: 'data/TwoSampleNetwork/Final_data.mat'
+2. Run 'similarity_matrix_sz.m';
+3. Run 'plot_sz_similarity_matrix.m' to reproduce Figure 3(b).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Computing resources:
+* Simulations were run on (anonymized university's) computing server, 30 parallel Intel(R) Xeon(R) CPU's, (model specification anonymized), 1GB requested memory for each task, MATLAB R2021a.
+* Simulation time cost: reported as part of simulation results.
+* Data examples were run on an author's personal computer:  AMD Ryzen 7 3700X 8-Core Processor, 3.59GHz, RAM 16.0 GB, MATLAB R2022a.
+* Data examples time cost: less than an hour (Gplus) and just a few minutes (schizophrenia).
+
+
+
+
+
