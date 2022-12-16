@@ -1,3 +1,11 @@
+# NetworkTwoSampleTest
+
+
+Reference: Higher-order accurate two-sample network inference and network hashing,
+by Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen
+https://arxiv.org/pdf/2208.07573.pdf
+
+
 Functions which were used in the paper presents below:
 1. 'generate_A.m'
 2. 'graphon.m'
