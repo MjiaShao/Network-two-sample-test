@@ -55,18 +55,18 @@ Before running our code, please:
 
 1. Run 'T_hat_and_CI_coverage_simulation.m', results will output to subfolder 'result';
    (This step takes some time, please be patient.)
-2. Run 'plot_CDF_approximation_error.m' to reproduce Figure 1(a);
-3. Run 'plot_coverage_heatmap.m' to reproduce Figure 1(b).
+2. Run 'plot_CDF_approximation_error.m' to reproduce Figure 1;
+3. Run 'plot_coverage_heatmap.m' to reproduce Figure 2.
 
 
 <h3>To reproduce simulation 3 results in Section 5.3:</h3>
 
 1. Run 'Roc_simulation.m', results will output to subfolder 'ROC_result';
    (This step takes some time, please be patient.  It's recommended to run this step on a computing server.)
-2. Run 'plot_Roc_all.m' to reproduce Row 1 of Figure 2;
-3. Run 'Roc_simulation2.m', results will output to subfolder 'ROC_result';
+2. Run 'plot_Roc_all.m' to reproduce Row 1 of Figure 3;
+3. Run 'Roc_simulation2.m' and 'Roc_simulation3.m', results will output to subfolder 'ROC_result';
    (This step takes some time, please be patient.  It's recommended to run this step on a computing server.)
-4. Run 'plot_ROC_comparison_hist.m'  to reproduce Row 2 of Figure 2.
+4. Run 'plot_ROC_comparison_hist.m'  to reproduce Row 2 of Figure 3.
 
 
 <h3>To reproduce data example 1 results in Section 5.4:</h3>
@@ -74,8 +74,7 @@ Before running our code, please:
 1. Preparation: download data from http://snap.stanford.edu/data/ego-Gplus.html (official website for this publically available data set) and unzip, place individual data files unzipped from 'gplus.tar.gz' under subfolder 'data/gplus', place 'gplus_combined.txt' under subfolder 'data'.
 2. Run 'data_preposessing_ego.m' for prepossessing data and it will automatically construct 'data_pre' and 'hash_edge' subfolders;
 3. Run 'similarity_matrix_ego.m', it will load the data in 'hash_edge' automatically; 
-4. Run 'shortest_distance_ego.m';
-5. Run 'plot_ego_similarity_matrix.m' to reproduce Figure 3(a).
+4. Run 'plot_ego_similarity_matrix.m' to reproduce Figure 4.
 
 
 
@@ -84,7 +83,7 @@ Before running our code, please:
 0. You need to obtain data from the data owner.  The data is not publically available.  See "Data_permission.txt" for more details.
 1. Preparation: place data at path: 'data/TwoSampleNetwork/Final_data.mat'
 2. Run 'similarity_matrix_sz.m';
-3. Run 'plot_sz_similarity_matrix.m' to reproduce Figure 3(b).
+3. Run 'plot_sz_similarity_matrix.m' to reproduce Figure 5.
 
 
 <h2>Computing resources:</h2>

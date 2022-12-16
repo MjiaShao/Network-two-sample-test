@@ -1,6 +1,5 @@
 rng(2);
 clear;
-% READ IN DATA
 load('./data/TwoSampleNetwork/Final_data.mat');
 l_NC = size(cor_NC_fisherZ_correct, 3);
 l_SZ = size(cor_SZ_fisherZ_correct, 3);
@@ -22,7 +21,6 @@ d2 = exp(-abs(pesti));
 
 
 
-% SVD
 K1 = 5;
 K2 = 4;
 K = max(K1,K2);
@@ -110,10 +108,10 @@ text(15+45+16+16+2+12,15+45+16+16+6,'b', 'Color','m', 'FontSize', FontSize,'Font
 
 
 pbaspect([1 1 1])
-xt = get(gca, 'XTick');                                             % Original 'XTick' Values
-xtlbl = linspace(50, 200, numel(xt));                     % New 'XTickLabel' Vector
-set(gca, 'XTick',xt, 'XTickLabel',xtlbl, 'XAxisLocation', 'top')   % Label Ticks
-set(gca, 'YTick',xt, 'YTickLabel',xtlbl)   % Label Ticks
+xt = get(gca, 'XTick');                                             
+xtlbl = linspace(50, 200, numel(xt));                    
+set(gca, 'XTick',xt, 'XTickLabel',xtlbl, 'XAxisLocation', 'top')   
+set(gca, 'YTick',xt, 'YTickLabel',xtlbl)  
 ax = gca;
 ax.TitleFontSizeMultiplier = 1.5;
 set(gca, 'FontSize', 18)

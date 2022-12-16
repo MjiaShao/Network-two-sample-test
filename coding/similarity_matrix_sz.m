@@ -19,7 +19,7 @@ end
 All_networks = cat(3, cor_SZ_fisherZ_correct, cor_NC_fisherZ_correct);
 l_all = size(All_networks, 3);
 
-
+mkdir(strcat("./hash_data_sz"));
 %% total network set
 l_all = size(All_networks, 3);
 dir1 = strcat("./hash_data_sz/");

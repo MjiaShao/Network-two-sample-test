@@ -6,8 +6,9 @@ for i = 1:length(Filesf)
     oldFilename = Filesf(i).name;
     parts = strsplit(oldFilename,'.');
     newFilename = strcat(parts(1),'_',parts(2),'.txt');
-    movefile( oldFilename, newFilename{end});
+    movefile( strcat("./data/gplus/",oldFilename), strcat("./data/gplus/",newFilename{end}));
 end
+Files = dir("./data/gplus");
 isdir = [Files.isdir];
 indexf = isdir ==0;
 Filesf = Files(indexf);
