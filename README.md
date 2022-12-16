@@ -3,7 +3,8 @@
 Each simulation/data example has its own main file.  See details below.
 
 <h2>Reference:</h2>
-Higher-order accurate two-sample network inference and network hashing<br />
+
+* Higher-order accurate two-sample network inference and network hashing<br />
 <i>Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu & Shuo Chen</i><br>
 https://arxiv.org/pdf/2208.07573.pdf
 
