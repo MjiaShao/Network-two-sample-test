@@ -1,4 +1,4 @@
-# NetworkTwoSampleTest
+# Network-Two-Sample-Test
 
 
 Reference: Higher-order accurate two-sample network inference and network hashing,<br>
