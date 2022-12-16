@@ -37,9 +37,9 @@ This README file contains:
 
 In the above list, files composed by others are:<br>
 
-  4.  publically available routine, https://github.com/yzhanghf/NetworkEdgeworthExpansion<br>
-  9.  publically available routine, https://github.com/yzhanghf/NeighborhoodSmoothing<br>
-  10. publically available routine, https://github.com/raacampbell/shadedErrorBar<br>
+ 4.  publically available routine, https://github.com/yzhanghf/NetworkEdgeworthExpansion<br>
+ 9.  publically available routine, https://github.com/yzhanghf/NeighborhoodSmoothing<br>
+ 10. publically available routine, https://github.com/raacampbell/shadedErrorBar<br>
 
 
 <h2>Instructions for result reproduction</h2>
