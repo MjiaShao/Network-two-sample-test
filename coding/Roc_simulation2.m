@@ -17,7 +17,7 @@ for n = nall
 			for j = 1:ndata
 				graN = GraphonName(i);
 				X = rand(n,1);
-				W1 = graphon(X,X,sparsity_parameters_a,graN);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
+				W1 = graphon(X,X,sparsity_parameters_a,graN);  W1 = W1-diag(diag(W1));
 				A = generate_A(W1);
 				filenamesave = strcat("./data_simulation_",string(n),'/',graN,"_",string(j));
 				save(filenamesave,'A');
@@ -40,7 +40,7 @@ for n = nall
 		example = "SmoothGraphoncomplex"; %% We use "BlockModel1" in the paper and "SmoothGraphon1" in the supplementary materials. 
 		
 		X = rand(n,1);
-		W1 = graphon(X,X,sparsity_parameters_a,example);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
+		W1 = graphon(X,X,sparsity_parameters_a,example);  W1 = W1-diag(diag(W1));
 		A = generate_A(W1);
 		conf_level = 0.05;
 		filenamesave = strcat("./example",string(n));

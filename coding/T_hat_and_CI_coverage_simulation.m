@@ -30,10 +30,10 @@ for m = mall
 			for i = 1:iterc
 				smooth = randn(1)*sqrt(cdelta*(log(m)*m^(-1/2)+log(n)*n^(-1/2)));
 				X = rand(m,1);
-				W1 = graphon(X,X,sparsity_parameters_a,GraphonName1);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
+				W1 = graphon(X,X,sparsity_parameters_a,GraphonName1);  W1 = W1-diag(diag(W1));
 				A = generate_A(W1);
 				Y = rand(n,1);
-				W2 = graphon(Y,Y,sparsity_parameters_b,GraphonName2);  W2 = W2-diag(diag(W2));%  W = W *sparsity_multiplier(n);
+				W2 = graphon(Y,Y,sparsity_parameters_b,GraphonName2);  W2 = W2-diag(diag(W2));
 				B = generate_A(W2);
 				% first calculate all statistics needed from A
 				rho_ahat = sum(A(:))/(m*(m-1));
