@@ -1,9 +1,9 @@
 # NetworkTwoSampleTest
 
 
-Main file: [WHICH FILE IS MAIN FILE?]
+Main file: <p style="color:red;">[Meijia, which file is main file?]</p>
 
-Reference:<br>
+Reference:<br><br>
 <i>Higher-order accurate two-sample network inference and network hashing,</i><br>
 Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu and Shuo Chen<br>
 https://arxiv.org/pdf/2208.07573.pdf
