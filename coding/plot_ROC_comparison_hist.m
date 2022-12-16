@@ -7,9 +7,9 @@ example1 = "BlockModel1"; %% we compared "SmoothGraphon1" in the supplementary m
 example2 = "SmoothGraphoncomplex";
 for i = 1:length(nall)   
     n = nall(i);
-    min_truth1 = readtable(strcat("~\ROC_result\minpv_truth_",example1,string(n),".csv"));
+    min_truth1 = readtable(strcat("./ROC_result/minpv_truth_",example1,string(n),".csv"));
     min_truth1 = table2array(min_truth1);
-    min_truth2 = readtable(strcat("~\ROC_result\minpv_truth_",example2,string(n),".csv"));
+    min_truth2 = readtable(strcat("./ROC_result/minpv_truth_",example2,string(n),".csv"));
     min_truth2 = table2array(min_truth2);
     min_truth = log(cat(2,min_truth1(:,1),min_truth2(:,1)));
     NameList = {'Found','Not found'};
@@ -46,9 +46,9 @@ end
 %% plot log p value comparison histogram plot without truncated x axis
 for i = 1:length(nall)   
     n = nall(i);
-    min_truth1 = readtable(strcat("~\ROC_result\minpv_truth_",example1,string(n),".csv"));
+    min_truth1 = readtable(strcat("./ROC_result/minpv_truth_",example1,string(n),".csv"));
     min_truth1 = table2array(min_truth1);
-    min_truth2 = readtable(strcat("~\ROC_result\minpv_truth_",example2,string(n),".csv"));
+    min_truth2 = readtable(strcat("./ROC_result/minpv_truth_",example2,string(n),".csv"));
     min_truth2 = table2array(min_truth2);
     min_truth = log(cat(2,min_truth1(:,1),min_truth2(:,1)));
     NameList = {'Found','Not found'};

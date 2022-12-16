@@ -11,29 +11,29 @@ for n = nall
 	rec = zeros(ndata*length(GraphonName),2);
 
 	for rndind = 1:total_MC
-		mkdir(strcat("~/data_simulation_",string(n)));
-		mkdir(strcat("~/data_hash_",string(n)));
+		mkdir(strcat("./data_simulation_",string(n)));
+		mkdir(strcat("./data_hash_",string(n)));
 		for i = 1:length(GraphonName)
 			for j = 1:ndata
 				graN = GraphonName(i);
 				X = rand(n,1);
 				W1 = graphon(X,X,sparsity_parameters_a,graN);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
 				A = generate_A(W1);
-				filenamesave = strcat("~/data_simulation_",string(n),'/',graN,"_",string(j));
+				filenamesave = strcat("./data_simulation_",string(n),'/',graN,"_",string(j));
 				save(filenamesave,'A');
 			end
 		end
 		for i = 1:length(GraphonName)
 			for j = 1:ndata
 				graN = GraphonName(i);
-				filenamesave = strcat("~/data_hash_",string(n),'/',graN,"_",string(j));
-				A = load(strcat("~/data_simulation_",string(n),'/',graN,"_",string(j)));
+				filenamesave = strcat("./data_hash_",string(n),'/',graN,"_",string(j));
+				A = load(strcat("./data_simulation_",string(n),'/',graN,"_",string(j)));
 				A = cell2mat(struct2cell(A));
 				Our_method_NetHashing(A, MotifName,filenamesave);
 			end
 		end
 		
-		Files = dir(strcat("~/data_hash_",string(n)));
+		Files = dir(strcat("./data_hash_",string(n)));
 		isdir = [Files.isdir];
 		indexf = isdir ==0;
 		Filesf = Files(indexf);
@@ -43,7 +43,7 @@ for n = nall
 		W1 = graphon(X,X,sparsity_parameters_a,example);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
 		A = generate_A(W1);
 		conf_level = 0.05;
-		filenamesave = strcat("~/example",string(n));
+		filenamesave = strcat("./example",string(n));
 		Our_method_NetHashing(A, MotifName,filenamesave);
 		p_all = zeros(length(Filesf),length(MotifName));
 		for i = 1:length(Filesf)
@@ -52,12 +52,12 @@ for n = nall
 		end
 		minmaxp = min(p_all,[],2);
 		psort = sort(minmaxp);
-		rmdir(strcat("~/data_simulation_",string(n)),'s');
-		rmdir(strcat("~/data_hash_",string(n)),'s');
+		rmdir(strcat("./data_simulation_",string(n)),'s');
+		rmdir(strcat("./data_hash_",string(n)),'s');
 	end
 
 	rec(:,1) = psort;
-	writematrix(rec,strcat("~/ROC_result/minpv_truth_",example,string(n),".csv"));
+	writematrix(rec,strcat("./ROC_result/minpv_truth_",example,string(n),".csv"));
 
 end
 

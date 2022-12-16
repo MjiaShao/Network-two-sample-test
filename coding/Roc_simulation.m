@@ -16,15 +16,15 @@ for n = nall
 
 	for rndind = 1:total_MC
 		rng(rndind);
-		mkdir(strcat("~/data_simulation_",string(n)));
-		mkdir(strcat("~/data_hash_",string(n)));
+		mkdir(strcat("./data_simulation_",string(n)));
+		mkdir(strcat("./data_hash_",string(n)));
 		for i = 1:length(GraphonName)
 			for j = 1:ndata
 				graN = GraphonName(i);
 				X = rand(n,1);
 				W1 = graphon(X,X,sparsity_parameters_a,graN);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
 				A = generate_A(W1);
-				filenamesave = strcat("~/data_simulation_",string(n),'/',graN,"_",string(j));
+				filenamesave = strcat("./data_simulation_",string(n),'/',graN,"_",string(j));
 				save(filenamesave,'A');
 			end
 		end
@@ -32,15 +32,15 @@ for n = nall
 		for i = 1:length(GraphonName)
 			for j = 1:ndata
 				graN = GraphonName(i);
-				filenamesave = strcat("~/data_hash_",string(n),'/',graN,"_",string(j));
-				A = load(strcat("~/data_simulation_",string(n),'/',graN,"_",string(j)));
+				filenamesave = strcat("./data_hash_",string(n),'/',graN,"_",string(j));
+				A = load(strcat("./data_simulation_",string(n),'/',graN,"_",string(j)));
 				A = cell2mat(struct2cell(A));
 				Our_method_NetHashing(A, MotifName,filenamesave);
 			end
 		end
 		time_hash(rndind,1) = toc;
 		
-		Files = dir(strcat("~/data_hash_",string(n)));
+		Files = dir(strcat("./data_hash_",string(n)));
 		isdir = [Files.isdir];
 		indexf = isdir ==0;
 		Filesf = Files(indexf);
@@ -53,7 +53,7 @@ for n = nall
 		A = generate_A(W1);
 		conf_level = 0.05;
 		tic; 
-		filenamesave = strcat("~/example",string(n));
+		filenamesave = strcat("./example",string(n));
 		Our_method_NetHashing(A, MotifName,filenamesave);
 		p_all = zeros(length(Filesf),length(MotifName));
 		for i = 1:length(Filesf)
@@ -65,16 +65,16 @@ for n = nall
 		elapsedTime(rndind,1) = toc;
 		[x1,y1,T,AUC] = perfcurve(Truthind,minmaxp,1);
 		auc_r(rndind,1) = AUC;
-		rmdir(strcat("~/data_simulation_",string(n)),'s');
-		rmdir(strcat("~/data_hash_",string(n)),'s');
+		rmdir(strcat("./data_simulation_",string(n)),'s');
+		rmdir(strcat("./data_hash_",string(n)),'s');
 	end
 
 	rec(:,1) = minmaxp;
 	rec(:,2) = Truthind;
-	writematrix(rec,strcat("~/ROC_result/minpv_truth_",example,string(n),".csv"));
-	writematrix(elapsedTime,strcat("~/ROC_result/querytime_",example,string(n),".csv"));
-	writematrix(time_hash,strcat("~/ROC_result/hashtime_",example,string(n),".csv"));
-	writematrix(auc_r,strcat("~/ROC_result/auc_",example,string(n),".csv"));
+	writematrix(rec,strcat("./ROC_result/minpv_truth_",example,string(n),".csv"));
+	writematrix(elapsedTime,strcat("./ROC_result/querytime_",example,string(n),".csv"));
+	writematrix(time_hash,strcat("./ROC_result/hashtime_",example,string(n),".csv"));
+	writematrix(auc_r,strcat("./ROC_result/auc_",example,string(n),".csv"));
 
 end
 

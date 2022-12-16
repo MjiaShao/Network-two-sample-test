@@ -17,6 +17,7 @@ function [p_value, conf_int] = Our_method_FastTest(FileName1, FileName2, conf_le
 	p_value = [];
 	conf_int = [];
 	count_index = 1;
+    cdelta = 0.01;
 	
 	
 	for(ml = 1:mList)
@@ -71,7 +72,8 @@ function [p_value, conf_int] = Our_method_FastTest(FileName1, FileName2, conf_le
 					( temp2.aa13 + temp2.aa41 )...
 				);
 		
-		T_hat = (rho_A^(-s)*U - rho_B^(-s)*V)/smn;
+		smooth = randn(1)*sqrt(cdelta*(log(m)*m^(-1/2)+log(n)*n^(-1/2)));
+		T_hat = (rho_A^(-s)*U - rho_B^(-s)*V)/smn+smooth;
 		
 		GT = cdf(StdNormal, T_hat) - pdf(StdNormal, T_hat) * ( Q1 + Q2*((T_hat).^2 - 1)+I_0 );
 		
@@ -85,8 +87,8 @@ function [p_value, conf_int] = Our_method_FastTest(FileName1, FileName2, conf_le
         D_mn = rho_A^(-s)*U - rho_B^(-s)*V;
         q_l = norminv(1-alpha/2) + I_0 +Q1+Q2*(norminv(1-alpha/2)^2-1 );
         q_u = norminv(alpha/2) + I_0 +Q1+Q2*(norminv(alpha/2)^2-1);
-        d_l = D_mn - q_l*smn;
-        d_u =  D_mn - q_u*smn;
+        d_l = D_mn - smn*(q_l-smooth);
+        d_u =  D_mn -smn*(q_u-smooth);
 		
 		conf_int(count_index,:) = [d_l,d_u];
 		

@@ -1,6 +1,6 @@
 nall = [100,200,400,800,1600];
 MarkerSize = 12;  LineWidth = 2;
-exampleall = ["BlockModel1","SmoothGraphon1"];
+exampleall = ["BlockModel1"];
 for example = exampleall
     time_hash = zeros(total_MC,length(nall));
     elapsedTime = zeros(total_MC,length(nall));
@@ -10,15 +10,15 @@ for example = exampleall
     box on
     for i = 1:length(nall)   
         n = nall(i);
-        min_truth = readtable(strcat("~\ROC_result\minpv_truth_", example, string(n),".csv"));
+        min_truth = readtable(strcat("./ROC_result/minpv_truth_", example, string(n),".csv"));
         min_truth = table2array(min_truth);
         [x1,y1,T,AUC] = perfcurve(min_truth(:,2),min_truth(:,1),1);
         plot(x1,y1,"LineWidth",LineWidth);
         hold on;
         
-        time_hash(:,i) = log(table2array(readtable(strcat("~\ROC_result\hashtime_", example,string(n),".csv"))));
-        elapsedTime(:,i) = log(table2array(readtable(strcat("~\ROC_result\querytime_", example,string(n),".csv"))));
-        auc_r(:,i)  = table2array(readtable(strcat("~\ROC_result\auc_", example,string(n),".csv")));
+        time_hash(:,i) = log(table2array(readtable(strcat("./ROC_result/hashtime_", example,string(n),".csv"))));
+        elapsedTime(:,i) = log(table2array(readtable(strcat("./ROC_result/querytime_", example,string(n),".csv"))));
+        auc_r(:,i)  = table2array(readtable(strcat("./ROC_result/auc_", example,string(n),".csv")));
     end
     xlabel('False positive rate')
     ylabel('True positive rate')
