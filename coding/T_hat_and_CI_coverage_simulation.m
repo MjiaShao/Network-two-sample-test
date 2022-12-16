@@ -3,11 +3,12 @@ clear
 mall = [10,20,40,80,160];
 nall = [10,20,40,80,160];
 MotifNameall = ["Triangle","Vshape"];
-GraphonName1 =  'SmoothGraphon3';
-GraphonName2 =  'BlockModel5';
-sparsity_parameters_a = 0.4;
-sparsity_parameters_b = 0.4;
+GraphonName1 =  'SmoothGraphon2';
+GraphonName2 =  'SmoothGraphon4';
+sparsity_parameters_a = 0.325;
+sparsity_parameters_b = 0.7;
 iterc = 10^5;
+cdelta = 0.01;
 
 for m = mall
 	for n = nall
@@ -27,6 +28,7 @@ for m = mall
 			coverage2 = zeros(iterc,1);
 			t_mc = zeros(iterc,1);
 			for i = 1:iterc
+				smooth = randn(1)*sqrt(cdelta*(log(m)*m^(-1/2)+log(n)*n^(-1/2)));
 				X = rand(m,1);
 				W1 = graphon(X,X,sparsity_parameters_a,GraphonName1);  W1 = W1-diag(diag(W1));%  W = W *sparsity_multiplier(n);
 				A = generate_A(W1);
@@ -129,8 +131,8 @@ for m = mall
 				alpha = 0.1;
 				q_l = norminv(1-alpha/2) + I0 +q1+q2*(norminv(1-alpha/2)^2-1 );
 				q_u = norminv(alpha/2) + I0 +q1+q2*(norminv(alpha/2)^2-1);
-				d_l = D_mn - q_l*s_mn;
-				d_u =  D_mn - q_u*s_mn;
+				d_l = D_mn - s_mn*(q_l-smooth);
+				d_u = D_mn - s_mn*(q_u-smooth);
 				if true_D < d_u && true_D > d_l
 					coverage(i,1) = 1;
 				else
@@ -138,8 +140,8 @@ for m = mall
 				end
 				q_l2 = norminv(1-alpha/2);
 				q_u2 = norminv(alpha/2);
-				d_l2 = D_mn - q_l2*s_mn;
-				d_u2 =  D_mn - q_u2*s_mn;
+				d_l2 = D_mn - s_mn*(q_l2-smooth);
+				d_u2 = D_mn - s_mn*(q_u2-smooth);
 				if true_D < d_u2 && true_D > d_l2
 					coverage2(i,1) = 1;
 				else
@@ -148,9 +150,9 @@ for m = mall
 
 			end
 
-			writematrix(coverage,strcat("~/result/MC_t_cover_edge_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"))
-			writematrix(coverage2,strcat("~/result/MC_t_cover_norm_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"))
-			writematrix(t_mc,strcat("~/result/MC_t_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"))
+			writematrix(coverage,strcat("./result/MC_t_cover_edge_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"))
+			writematrix(coverage2,strcat("./result/MC_t_cover_norm_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"))
+			writematrix(t_mc,strcat("./result/MC_t_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"))
 end
 end
 end

@@ -1,15 +1,16 @@
 clear
 MarkerSize = 12;
-GraphonName1 =  'SmoothGraphon3';
-GraphonName2 =  'BlockModel5';
+GraphonName1 =  'SmoothGraphon2';
+GraphonName2 =  'SmoothGraphon4';
 
 rng(9);
 N = [10,20,40,80,160];
 MotifNameall   = ["Triangle","Vshape"];
-sparsity_parameters_a = 0.4;
-sparsity_parameters_b = 0.4;
+sparsity_parameters_a = 0.325;
+sparsity_parameters_b = 0.7;
 r = 3;
 iterc = 100;
+cdelta = 0.01;
 test_points = -2:0.1:2;   % Query points
 %% generate standard normal distribution's CDF 
 normcdf = cdf('Normal',test_points,0,1);
@@ -32,10 +33,11 @@ for k = 1:length(N)
             sparsity_parameters_b ^(-s)*sparsity_parameters_b ^s *mu_n;
         
  
-        data = readtable(strcat("~\result\MC_t_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"));
+        data = readtable(strcat("./result/MC_t_",string(m),"_",string(n),"_",MotifName,"_",GraphonName1,"_",GraphonName2,"_mn.csv"));
         d = table2array(data);
-        d = d(d<10, :);
-        d = d(d>-10, :);
+        d = rmmissing(d);
+        smooth = randn(size(d,1),1)*sqrt(cdelta*(log(m)*m^(-1/2)+log(n)*n^(-1/2)));
+        d = d+smooth;
         [f,X] = ecdf(d);
         X = X(2:end);     
         f = f(2:end);     
