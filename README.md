@@ -33,7 +33,7 @@ This README file contains:
 7. 'sort_nodes.m'
 8. 'sort_nodes_with_clusters.m'
 9. 'NeighborhoodSmoothing.m'
-10.'shadedErrorBar.m'
+10. 'shadedErrorBar.m'
 
 In the above list, files composed by others are:<br>
 
