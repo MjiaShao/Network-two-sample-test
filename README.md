@@ -12,7 +12,6 @@ https://arxiv.org/pdf/2208.07573.pdf
 This README file contains:
 <ol>
   <li>Step-by-step instructions on how to reproduce the simulation results in Main Paper.
-  <li>Computing resources (at the end of this file).
 </ol>
    
 <h2>Remarks:</h2>
@@ -86,12 +85,6 @@ Before running our code, please:
 3. Run 'plot_sz_similarity_matrix.m' to reproduce Figure 5.
 
 
-<h2>Computing resources:</h2>
-
-* Simulations were run on Ohio State University computing server, 30 parallel Intel(R) Xeon(R) CPU's, (model specification anonymized), 1GB requested memory for each task, MATLAB R2021a.
-* Simulation time cost: reported as part of simulation results.
-* Data examples were run on an author's personal computer:  AMD Ryzen 7 3700X 8-Core Processor, 3.59GHz, RAM 16.0 GB, MATLAB R2022a.
-* Data examples time cost: less than an hour (Gplus) and just a few minutes (schizophrenia).
 
 
 
