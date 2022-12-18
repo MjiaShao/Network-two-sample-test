@@ -9,11 +9,9 @@ Each simulation/data example has its own main file.  See details below.
 https://arxiv.org/pdf/2208.07573.pdf
 
 <h2>Contents:</h2>
-This README file contains:
-<ol>
-  <li>Step-by-step instructions on how to reproduce the simulation results in Main Paper.
-</ol>
-   
+This README file contains step-by-step instructions on how to reproduce the simulation results in Main Paper.
+
+
 <h2>Remarks:</h2>
 <ul>
   <li>Additional simulation results reported in Supplemental Material document are either intermediate outputs of the code here, or can be easily reproduced by commenting out Line 28 in 'plot_ROC_comparison_hist.m'.
@@ -26,19 +24,14 @@ This README file contains:
 1. 'generate_A.m'
 2. 'graphon.m'
 3. 'graphon_mean.m'
-4. 'Motif.m'
+4. 'Motif.m'  (publically available routine, https://github.com/yzhanghf/NetworkEdgeworthExpansion)
 5. 'Our_method_NetHashing.m'
 6. 'Our_method_FastTest.m'
 7. 'sort_nodes.m'
 8. 'sort_nodes_with_clusters.m'
-9. 'NeighborhoodSmoothing.m'
-10. 'shadedErrorBar.m'
+9. 'NeighborhoodSmoothing.m'  (publically available routine, https://github.com/yzhanghf/NeighborhoodSmoothing)
+10. 'shadedErrorBar.m'  (publically available routine, https://github.com/raacampbell/shadedErrorBar)
 
-In the above list, files composed by others are:<br>
-
-  4\.  publically available routine, https://github.com/yzhanghf/NetworkEdgeworthExpansion<br>
-  9\.  publically available routine, https://github.com/yzhanghf/NeighborhoodSmoothing<br>
- 10\. publically available routine, https://github.com/raacampbell/shadedErrorBar<br>
 
 
 <h2>Instructions for result reproduction</h2>
