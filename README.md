@@ -1,85 +1,160 @@
-# Network-Two-Sample-Test
+# Reproducing the results in JASA-TM-2024-0092-R2
 
-Each simulation/data example has its own main file.  See details below.
-
-<h2>Reference:</h2>
-
-* Higher-order accurate two-sample network inference and network hashing<br />
-<i>Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu & Shuo Chen</i><br>
-https://arxiv.org/pdf/2208.07573.pdf
-
-<h2>Contents:</h2>
-This README file contains step-by-step instructions on how to reproduce the simulation results in Main Paper.
+This document serves the Round 3 revision of this paper.
 
 
-<h2>Remarks:</h2>
-<ul>
-  <li>Additional simulation results reported in Supplemental Material document are either intermediate outputs of the code here, or can be easily reproduced by commenting out Line 28 in 'plot_ROC_comparison_hist.m'.
-   <li>Data example 2: if you would like to reproduce the results for data example 2, please contact the owner of that data set (see "Data_permission.txt" for more details) before running the code.
-</ul>
+## Hardware requirement:  computing cluster, such as Unity
+* It is likely infeasible to run some simulations on personal computers.  Therefore, all reproducibility details are written for running on high-performance computing (HPC) clusters, such as Unity.  In this document, we will use Unity with Slurm queueing system.
+* In this work, we use the word "Magpie" as the anonymized username.
 
+## Matlab files that encode our method
 
-<h2>Subroutine list</h2>
-
-1. 'generate_A.m'
-2. 'graphon.m'
-3. 'graphon_mean.m'
-4. 'Motif.m'  (publically available routine, https://github.com/yzhanghf/NetworkEdgeworthExpansion)
-5. 'Our_method_NetHashing.m'
-6. 'Our_method_FastTest.m'
-7. 'sort_nodes.m'
-8. 'sort_nodes_with_clusters.m'
-9. 'NeighborhoodSmoothing.m'  (publically available routine, https://github.com/yzhanghf/NeighborhoodSmoothing)
-10. 'shadedErrorBar.m'  (publically available routine, https://github.com/raacampbell/shadedErrorBar)
+* Users who want to apply our method, please copy the entire "subroutine" subfolder, as the main method files still depend on a few further subroutines.
+* ```subroutines/Our_method_classic.m```: Input two adjacency matrices and perform our proposed test.
+* ```subroutines/Our_method_NetHashing.m``` and ```subroutines/Our_method_FastTest.m```: These code our hashing and fast test method.  Run the hashing to compress each individual network into a sequence of summary statistics.  Then run the second to perform our method based on these summary statistics, without needing to access the original adjacency matrices.
 
 
 
-<h2>Instructions for result reproduction</h2>
+## Steps to reproduce simulation results
 
-<h3>Preparation:</h3>
+0. [Preparation] Upload all contents of this repository to a unity folder, under the path:
+	```
+	/home/Magpie/Network-two-sample-test/
+	```
+	where recall that "Magpie" is the anonymized name.
+	Please notice that the Unity server that you use to reproduce this code may have a different folder structure -- in which case, please also revise the Slurm scripts under the "slurm" subfolder accordingly.
+	We also assume that "~" refers to the folder "/home/Magpie/".
 
-Before running our code, please:
+1. [Preparation] Replace "Magpie" by your own username.
 
-1. Place all coding files in main working folder, and create two subfolders named 'result' and 'ROC_result';
-2. Place the data files in a subfolder named 'data'.
+	First, edit "folderlist.txt", replace "Magpie" there by your own username.
+	Then in Unity commandline, run
+	```
+	sh changename.sh Magpie YOUR-OWN-USERNAME
+	```
 
-<h3>To reproduce simulations 1 & 2 results in Sections 5.1 and 5.2:</h3>
+	For the remaining steps, whenever we need to describe folder paths, we will still use "Magpie" as the anonymized username.
 
-1. Run 'T_hat_and_CI_coverage_simulation.m', results will output to subfolder 'result';
-   (This step takes some time, please be patient.)
-2. Run 'plot_CDF_approximation_error.m' to reproduce Figure 1;
-3. Run 'plot_coverage_heatmap.m' to reproduce Figure 2.
+2. [Preparation] Run the following commands to prepare folders to hold intermediate results, logs and plots
+	```
+	mkdir results pbs_logs plots
+	```
+
+3. To reproduce Simulation 1 results: 
+	From the main folder, run
+	```
+	cd qsub/simulation-1
+	sh submit_all.sh
+	cd ..
+	cd ..
+	```
+	After all jobs finish, from the main folder, run
+	```
+	module load matlab
+	matlab -r "print_simulation_1_results"
+	```
+
+4. To reproduce Simulation 2 results:
+	From the main folder, run
+	```
+	cd qsub/simulation-2
+	sh submit_all.sh
+	cd ..
+	cd ..
+	```
+	After all jobs finish, from the main folder, run
+	```
+	module load matlab
+	matlab -r "print_simulation_2_results"
+	```
+
+5. To reproduce Simulation 3 results:
+	From the main folder, run
+	```
+	cd qsub/simulation-3
+	sh submit_all.sh
+	cd ..
+	cd ..
+	```
+	After all jobs finish, from the main folder, run
+	```
+	module load matlab
+	matlab -r "print_simulation_3_results"
+	```
+
+6. To reproduce Simulation 4 results:
+	From the main folder, run
+	```
+	cd qsub/simulation-4
+	sh submit_all.sh
+	cd ..
+	cd ..
+	```
+	After all jobs finish, from the main folder, run
+	```
+	module load matlab
+	matlab -r "print_simulation_4_results"
+	```
+
+7. To reproduce Simulation 5 results:
+	From the main folder, run
+	```
+	cd qsub/simulation-5
+	cd 1-degenerate-vs-degenerate
+	sh submit_all.sh
+	cd ..
+	cd 2-degenerate-vs-nondegenerate
+	sh submit_all.sh
+	cd ..
+	cd ..
+	cd ..
+	```
+	After all jobs finish, from the main folder, run
+	```
+	module load matlab
+	matlab -r "print_simulation_5_results"
+	```
 
 
-<h3>To reproduce simulation 3 results in Section 5.3:</h3>
 
-1. Run 'Roc_simulation.m', results will output to subfolder 'ROC_result';
-   (This step takes some time, please be patient.  It's recommended to run this step on a computing server.)
-2. Run 'plot_Roc_all.m' to reproduce Row 1 of Figure 3;
-3. Run 'Roc_simulation2.m' and 'Roc_simulation3.m', results will output to subfolder 'ROC_result';
-   (This step takes some time, please be patient.  It's recommended to run this step on a computing server.)
-4. Run 'plot_ROC_comparison_hist.m'  to reproduce Row 2 of Figure 3.
+## Steps to reproduce data example results
 
-
-<h3>To reproduce data example 1 results in Section 5.4:</h3>
-
-1. Preparation: download data from http://snap.stanford.edu/data/ego-Gplus.html (official website for this publically available data set) and unzip, place individual data files unzipped from 'gplus.tar.gz' under subfolder 'data/gplus', place 'gplus_combined.txt' under subfolder 'data'.
-2. Run 'data_preposessing_ego.m' for prepossessing data and it will automatically construct 'data_pre' and 'hash_edge' subfolders;
-3. Run 'similarity_matrix_ego.m', it will load the data in 'hash_edge' automatically; 
-4. Run 'plot_ego_similarity_matrix.m' to reproduce Figure 4.
-
-
-
-<h3>To reproduce data example 2 results in Section 5.5:</h3>
-
-0. You need to obtain data from the data owner.  The data is not publically available.  See "Data_permission.txt" for more details.
-1. Preparation: place data at path: 'data/TwoSampleNetwork/Final_data.mat'
-2. Run 'similarity_matrix_sz.m';
-3. Run 'plot_sz_similarity_matrix.m' to reproduce Figure 5.
+1. Example 1:
+	1. Preparation: download data from http://snap.stanford.edu/data/ego-Gplus.html (official website for this publically available data set) and unzip, place individual data files unzipped from "gplus.tar.gz" under subfolder "data/gplus", place "gplus_combined.txt" under subfolder "data".
+	2. To reproduce our method's result: cd to "data" subfolder.  Submit the slurm job:
+	```
+	cd slurm
+	sbatch gplus_our_method.sh
+	cd ..
+	```
+	to output the plot.
+	3. To reproduce the result of subsampling, submit the slurm job:
+	```
+	cd slurm
+	sbatch gplus_subsample.sh
+	cd ..
+	```
+	to output the plot.
 
 
 
+2. Example 2: 
+	1. It's recommended to request the data from the data owner, as specified in the ACC form accompanying this paper.  Alternatively, you may download the data file "Final_data.mat" from this repository and place it in the "data" subfolder.  However, please notice that this file is a "facsimile": artificial noise was added for privacy protection.  Consequently, the artificial noise may lead to some difference in reproduced results.
+	2. To reproduce our method's result: cd to 'data' subfolder and submit the slurm job:
+	```
+	cd slurm
+	sbatch sz_our_method.sh
+	cd ..
+	```
+	3. To reproduce the results in benchmark methods, submit the following slurm jobs:
 
-
+	```
+	cd slurm
+	sbatch sz_subsample.sh
+	sbatch sz_nonparGT.sh
+	sbatch sz_netcomp.sh
+	cd ..
+	```
+	4. After all methods finish, run "example_2_plot_all_methods.m" in MATLAB to output the plots.
 
 
