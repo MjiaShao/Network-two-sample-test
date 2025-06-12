@@ -21,7 +21,7 @@ by Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu, Shuo Chen
 ```
 
 
-## Hardware requirement:  computing cluster, such as Unity
+## Hardware requirement:  High-performance computing (HPC) cluster
 * It is likely infeasible to run some simulations on personal computers.  Therefore, all reproducibility details are written for running on high-performance computing (HPC) clusters, such as Unity.  In this document, we will use Unity with Slurm queueing system.
 * In this work, we use the word "Magpie" as the anonymized username.
 
