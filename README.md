@@ -14,7 +14,7 @@ by Meijia Shao, Dong Xia, Yuan Zhang, Qiong Wu, Shuo Chen
   author={Shao, Meijia and Xia, Dong and Zhang, Yuan and Wu, Qiong and Chen, Shuo},
   journal={Journal of the American Statistical Association},
   number={just-accepted},
-  pages={1--27},
+  pages={1--26},
   year={2025+},
   publisher={Taylor \& Francis}
 }
